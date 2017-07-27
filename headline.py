@@ -201,12 +201,12 @@ def train():
 
       # Get a batch and make a step.
       start_time = time.time()
-      #到底是哪些参数需要train
+
       encoder_inputs, decoder_inputs, target_weights = model.get_batch(
           train_set, bucket_id)
       print('*'*80)
       print(encoder_inputs)
-      #在训练时，forward_only为True表示不需要更新参数
+      #在训练时，forward_only为Flase表示需要更新参数
       _, step_loss, _ = model.step(sess, encoder_inputs, decoder_inputs,
                                    target_weights, bucket_id, False)
       step_time += (time.time() - start_time) / FLAGS.steps_per_checkpoint
